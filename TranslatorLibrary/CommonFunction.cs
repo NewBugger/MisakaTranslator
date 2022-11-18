@@ -107,7 +107,9 @@ namespace TranslatorLibrary
                 lock (typeof(CommonFunction))
                     if (HC == null)
                     {
-                        HC = new HttpClient() { Timeout = TimeSpan.FromSeconds(8) };
+                        var px = new WebProxy() { Address = new Uri("http://127.0.0.1:1082"), UseDefaultCredentials = true };
+                        var ph = new HttpClientHandler() { Proxy = px };
+                        HC = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
                         var headers = HC.DefaultRequestHeaders;
                         headers.UserAgent.ParseAdd("MisakaTranslator");
                         headers.Connection.ParseAdd("keep-alive");
