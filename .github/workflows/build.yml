@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@main
-    - uses: microsoft/setup-msbuild@main
+    - uses: microsoft/setup-msbuild@v1
     - run: msbuild -v:m -r
     - uses: actions/upload-artifact@main
       with:
