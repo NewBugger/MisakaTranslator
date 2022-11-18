@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [develop-2]
+    branches: [develop-20]
   pull_request:
 
 jobs:
@@ -13,4 +13,4 @@ jobs:
     - run: msbuild -v:m -r
     - uses: actions/upload-artifact@main
       with:
-        path: MisakaTranslator-WPF/
+        path: MisakaTranslator-WPF/bin
