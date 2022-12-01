@@ -3,6 +3,7 @@ using tesseract = Tesseract.TesseractOCR;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace OCRLibrary
             try
             {
                 var stream = new MemoryStream();
-                img.Save(stream, Imaging.ImageFormat.Bmp);
+                img.Save(stream, ImageFormat.Bmp);
                 var pix = tesseract.Pix.Image.LoadFromMemory(stream.GetBuffer(), 0, Convert.ToInt32(stream.Length));
                 var recog = engine.Process(pix);
                 stream.Dispose();
